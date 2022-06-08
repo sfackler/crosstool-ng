@@ -580,6 +580,7 @@ do_gcc_core_backend() {
     # miscompile or outright fail.
     CT_DoExecLog CFG                                   \
     CC_FOR_BUILD="${CT_BUILD}-gcc"                     \
+    CXX_FOR_BUILD="${CT_BUILD}-g++"                    \
     CFLAGS="${cflags}"                                 \
     CFLAGS_FOR_BUILD="${cflags_for_build}"             \
     CXXFLAGS="${cflags} ${cxxflags_for_build}"         \
@@ -1176,7 +1177,7 @@ do_gcc_backend() {
     CT_DoLog DEBUG "Extra config passed: '${extra_config[*]}'"
 
     # We may need to modify host/build/target CFLAGS separately below
-    cflags_for_build="${cflags}"
+    cflags_for_build="${CT_CFLAGS_FOR_BUILD}"
     cxxflags_for_build="${CT_CXXFLAGS_FOR_BUILD}"
     cflags_for_target="${CT_TARGET_CFLAGS}"
 
@@ -1211,6 +1212,7 @@ do_gcc_backend() {
     # See do_gcc_core_backend for explanation.
     CT_DoExecLog CFG                                   \
     CC_FOR_BUILD="${CT_BUILD}-gcc"                     \
+    CXX_FOR_BUILD="${CT_BUILD}-g++"                    \
     CFLAGS="${cflags}"                                 \
     CFLAGS_FOR_BUILD="${cflags_for_build}"             \
     CXXFLAGS="${cflags} ${cxxflags_for_build}"         \
